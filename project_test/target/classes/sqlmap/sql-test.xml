@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap 
+    PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" 
+    "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+   <!-- <typeAlias alias="user" type="com.shop.entity.User" />-->
+    <resultMap id="UserDO" class="com.shop.entity.User">
+        <result property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="password" column="password" />
+        <result property="age" column="age" />
+    </resultMap>
+
+    <!-- resultClass与上方sqlMap定义的映射对应 -->
+    <select id="getUsersByName" parameterClass="java.lang.String" resultMap="UserDO">
+        select id,password,age,name
+        from t_user
+        where name = #name#
+    </select>
+</sqlMap>
